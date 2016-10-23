@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-import Root from './components/root';
+import Root from './app/root';
+var moment = require('moment');
+import { fetchCurrentUser } from './session/session_api_util';
 
-import { test, loginUser, logoutUser } from './util/session_api_util';
+import { fetchFeed, fetchProfilePic } from './posts/post_api_util';
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  window.test = test;
-  window.loginUser = loginUser;
-  window.logoutUser = logoutUser;
-  const preloadedState = {session: {currentUser: null, errors: []}};
+const renderApp = (response) => {
+  let currentUser = typeof response === 'string' ? null : response;
+  const preloadedState = {
+    session: {currentUser: currentUser, errors: []},
+    feed: []
+  };
   const rootEl = document.getElementById('root');
   const store = window.store = configureStore(preloadedState);
   ReactDOM.render(<Root store={store} />, rootEl);
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.moment = moment;
+  window.fetchProfilePic = fetchProfilePic;
+  window.fetchFeed = fetchFeed;
+  fetchCurrentUser(renderApp, renderApp);
 });

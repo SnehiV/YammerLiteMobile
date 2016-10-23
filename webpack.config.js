@@ -1,12 +1,19 @@
 const path = require('path');
 
+const buildDirectory = './dist/';
+
 module.exports = {
   context: __dirname,
   entry: "./lib/yammerLite.jsx",
   output: {
-    path: path.join(__dirname, "lib"),
+    path: path.resolve(buildDirectory),
     filename: "bundle.js"
   },
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },  
   module: {
     loaders: [
       {
@@ -14,7 +21,7 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react', 'stage-0']
         }
       }
     ]
