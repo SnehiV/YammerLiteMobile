@@ -5,7 +5,7 @@ import Root from './app/root';
 var moment = require('moment');
 import { fetchCurrentUser } from './session/session_api_util';
 
-import { fetchFeed, fetchProfilePic } from './posts/post_api_util';
+import { fetchFeed, fetchProfilePic, newPost } from './posts/post_api_util';
 
 const renderApp = (response) => {
   let currentUser = typeof response === 'string' ? null : response;
@@ -19,6 +19,7 @@ const renderApp = (response) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  window.newPost = newPost;
   window.moment = moment;
   window.fetchProfilePic = fetchProfilePic;
   window.fetchFeed = fetchFeed;

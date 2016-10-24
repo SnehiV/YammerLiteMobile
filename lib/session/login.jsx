@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Col, FormControl, Button} from 'react-bootstrap';
+import { withRouter } from 'react-router';
 
 class Login extends React.Component{
   constructor(props){
@@ -34,13 +35,13 @@ class Login extends React.Component{
       error = <p>{this.props.session.errors[0]}</p>;
     }
     return(
-      <Col className='login-container' xsOffset={2} smOffset={3} xs={8} sm={6}>
-          <Col xsOffset={2} smOffset={3}>
-            <h3>Sign In</h3>
+      <Col className='login-container' xsOffset={0} smOffset={1} xs={12} sm={10} md={6} mdOffset={3}>
+          <Col xsOffset={0} smOffset={1} mdOffset={3}>
+            <h3 id='sign-in'>Sign In</h3>
           </Col>
           <Form horizontal onSubmit={this.handleSubmit}>
            <FormGroup controlId="formHorizontalUsername">
-             <Col xs={8} sm={6} xsOffset={2} smOffset={3}>
+             <Col xs={12} sm={10} xsOffset={0} smOffset={1} md={6} mdOffset={3}>
                <FormControl
                  type="username"
                  placeholder="Username"
@@ -50,7 +51,7 @@ class Login extends React.Component{
            </FormGroup>
 
            <FormGroup controlId="formHorizontalPassword">
-             <Col xs={8} sm={6} xsOffset={2} smOffset={3}>
+             <Col xs={12} sm={10} xsOffset={0} smOffset={1} md={6} mdOffset={3}>
                <FormControl
                  type="password"
                  placeholder="Password"
@@ -60,14 +61,14 @@ class Login extends React.Component{
            </FormGroup>
 
            <FormGroup>
-            <Col xs={8} sm={6} xsOffset={2} smOffset={3}>
+            <Col xs={12} sm={10} xsOffset={0} smOffset={1} md={6} mdOffset={3}>
               <Button bsSize="lg" type="submit" block>
                 Login
               </Button>
             </Col>
            </FormGroup>
           </Form>
-        <Col xs={8} sm={6} xsOffset={2} smOffset={3}>
+        <Col xs={12} sm={10} xsOffset={0} smOffset={1} md={6} mdOffset={3}>
           <div className='errors'>
             {error}
           </div>
@@ -77,4 +78,4 @@ class Login extends React.Component{
   }
 }
 
-export default Login;
+export default withRouter(Login);

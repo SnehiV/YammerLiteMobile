@@ -6,19 +6,27 @@ class App extends React.Component{
   constructor(props){
     super(props);
   }
+  //
+  componentDidUpdate(prevProps, prevState){
+    if (!prevProps.currentUser && this.props.currentUser) {
+      this.props.router.push('/home');
+    } else if (prevProps.currentUser && !this.props.currentUser) {
+      this.props.router.push('/');
+    }
+  }
 
 
   render(){
-
     return(
-      <div className='app-container'>
+      <div className='application-container'>
         <NavigationBar
           currentUser={this.props.currentUser}
-          handleLogout={this.props.handleLogout} />
+          handleLogout={this.props.handleLogout}
+          fetchFeed={this.props.fetchFeed} />
         {this.props.children}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

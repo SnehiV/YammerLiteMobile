@@ -1,30 +1,35 @@
 import React from 'react';
 var moment = require('moment');
-import PostItem from '../posts/post_item';
+import PostFeed from '../posts/post_feed';
+import PostForm from '../posts/post_form';
+import { withRouter } from 'react-router';
 
 
 class Home extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      feed: this.props.feed.slice(10)
+    };
   }
 
   componentWillMount(){
-    let filter = moment(Date.now()).subtract(4, 'months').toDate();
+    if (!this.props.currentUser){
+      this.props.router.push('/');
+    }
+    let filter = moment(Date.now()).subtract(1, 'week').toDate();
     this.props.fetchFeed(filter);
   }
 
-  render(){
-    let feed = this.props.feed.map(post => {
-      return <PostItem key={post._id} post={post} />;
-    });
 
+  render(){
     return(
-      <ul>
-        {feed}
-      </ul>
+      <div className='home-content'>
+        <PostForm newPost={this.props.newPost} currentUser={this.props.currentUser} />
+        <PostFeed feed={this.props.feed} newComment={this.props.newComment} />
+      </div>
     );
   }
-
 }
 
-export default Home;
+export default withRouter(Home);

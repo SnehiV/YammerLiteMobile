@@ -1,12 +1,14 @@
 import React from 'react';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import ChangeProfileImage from './change_profile_image';
+var moment = require('moment');
 
 class NavigationBar extends React.Component{
   constructor(props){
     super(props);
     this.handleFeedFilterSelect = this.handleFeedFilterSelect.bind(this);
     this.handleCurrentUserSelect = this.handleCurrentUserSelect.bind(this);
+    this.refresh = this.refresh.bind(this);
     this.state = {
       showPasswordModal: false
     };
@@ -36,6 +38,24 @@ class NavigationBar extends React.Component{
   handleFeedFilterSelect(key){
     $('#feedFilter').text(key);
     $('#feedFilter').append("<span class='caret'></span>");
+    let filter;
+    switch (key) {
+      case 'Today':
+        filter = moment().startOf('day').toDate();
+        break;
+      case 'This Week':
+        filter = moment().startOf('week').toDate();
+        break;
+      case 'Last Week':
+        filter = moment().startOf('week').subtract(1, 'week').toDate();
+        break;
+      case 'This Quarter':
+        filter = moment().startOf('quarter').toDate();
+        break;
+      default:
+        filter = moment().startOf('week').toDate();
+    }
+    this.props.fetchFeed(filter);
   }
 
   handleCurrentUserSelect(key){
@@ -46,6 +66,11 @@ class NavigationBar extends React.Component{
       default:
 
     }
+  }
+
+  refresh(e){
+    let filterString = $('#feedFilter').text().trim();
+    this.handleFeedFilterSelect(filterString);
   }
 
   render(){
@@ -59,7 +84,7 @@ class NavigationBar extends React.Component{
       if (this.props.currentUser){
         return(
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Refresh</NavItem>
+            <NavItem onClick={this.refresh} href="#">Refresh</NavItem>
             <NavDropdown
               eventKey={3}
               onSelect={this.handleFeedFilterSelect}
@@ -69,7 +94,7 @@ class NavigationBar extends React.Component{
               <MenuItem eventKey={'Today'}>Today</MenuItem>
               <MenuItem eventKey={'This Week'}>This Week</MenuItem>
               <MenuItem eventKey={'Last Week'}>Last Week</MenuItem>
-              <MenuItem eventKey={'All'}>All</MenuItem>
+              <MenuItem eventKey={'This Quarter'}>All</MenuItem>
 
             </NavDropdown>
 

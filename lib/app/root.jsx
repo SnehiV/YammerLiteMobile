@@ -6,7 +6,7 @@ import Login from '../session/login';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <AppRouter currentUser={store.getState().session.currentUser}/>
+    <AppRouter currentUser={store.getState().session.currentUser} />
   </Provider>
 );
 

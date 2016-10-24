@@ -12,7 +12,6 @@ class AppRouter extends React.Component{
   }
 
   _redirectIfLoggedIn(nextState, replace){
-    debugger
     if (this.props.currentUser){
       replace("/home");
     }
@@ -30,8 +29,8 @@ class AppRouter extends React.Component{
       <Router history={hashHistory}>
         <Route path="/" component={AppContainer}>
           <IndexRedirect to="/login" />
-          <Route path="/login" component={LoginContainer} onEnter={this._redirectIfLoggedIn} />
-          <Route path="/home" component={HomeContainer} onEnter={this._ensureLoggedIn} />
+          <Route path="/login" component={LoginContainer} />
+          <Route path="/home" component={HomeContainer} />
         </Route>
       </Router>
     );
