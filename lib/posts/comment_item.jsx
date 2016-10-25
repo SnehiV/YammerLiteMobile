@@ -5,7 +5,7 @@ import { Image } from 'react-bootstrap';
 const CommentItem = ({comment}) => (
   <div className='comment-container'>
     <div className="comment-item">
-      <Image src={`https://bfapp-bfsharing.rhcloud.com/${comment.commentUser.imageUrl}`} responsive />
+      <Image className='comment-profile' src={`https://bfapp-bfsharing.rhcloud.com/${comment.commentUser.imageUrl}`} responsive />
       <div className='comment-item-content'>
         <div className='comment-item-header'>
           <h4 className='comment-username'>{comment.commentUser.username}</h4>

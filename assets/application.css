@@ -6,16 +6,23 @@
     margin-left: 15px;
 }
 
-.post-container {
+.list-group {
+  width: 100%
+}
+
+.list-group-item {
     border-radius: 7px;
     margin-bottom: 30px;
     border: 1px solid lightgray;
     overflow: auto;
+    padding: 3%;
 }
 
 .post-item {
     background-color: white;
     padding: 4%;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
 }
 
 .post-item-header {
@@ -64,7 +71,12 @@ form.form-horizontal {
     flex-direction: column;
 }
 
-.comment-form-container {padding: 15px 15px 0 15px;}
+#comments {
+  background-color: rgba(225, 241, 254, 1);
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+}
+
 
 .comment-item {
     display: flex;
@@ -100,7 +112,11 @@ form.form-horizontal {
 .comment-form-container {
     display: flex;
     flex-direction: column;
-    padding: 10px 30px 0 30px;
+    padding: 10px 10px 0 10px;
+}
+
+.comment-container {
+  padding: 4%;
 }
 
 .comments {

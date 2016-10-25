@@ -49,8 +49,8 @@ class NavigationBar extends React.Component{
       case 'Last Week':
         filter = moment().startOf('week').subtract(1, 'week').toDate();
         break;
-      case 'This Quarter':
-        filter = moment().startOf('quarter').toDate();
+      case 'This Year':
+        filter = moment().startOf('year').toDate();
         break;
       default:
         filter = moment().startOf('week').toDate();
@@ -94,7 +94,7 @@ class NavigationBar extends React.Component{
               <MenuItem eventKey={'Today'}>Today</MenuItem>
               <MenuItem eventKey={'This Week'}>This Week</MenuItem>
               <MenuItem eventKey={'Last Week'}>Last Week</MenuItem>
-              <MenuItem eventKey={'This Quarter'}>All</MenuItem>
+              <MenuItem eventKey={'This Year'}>This Year</MenuItem>
 
             </NavDropdown>
 

@@ -1,18 +1,16 @@
 import React from 'react';
 import CommentItem from './comment_item';
 import CommentFormContainer from './comment_form_container';
-
+import { ListGroup } from 'react-bootstrap';
 const Comments = ({post}) => {
   let commentsList = post.comments.map(comment => {
-    return <CommentItem className='item' key={comment._id} comment={comment} />;
+    return <CommentItem className='list-group-item' key={comment._id} comment={comment} />;
   });
   return(
-    <div className='comments'>
-      <ul className='comment-list'>
+      <ListGroup id='comments' componentClass='ul'>
         {commentsList}
-      </ul>
-      <CommentFormContainer post={post} />
-    </div>
+        <CommentFormContainer post={post} />
+      </ListGroup>
   );
 };
 

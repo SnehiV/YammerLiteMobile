@@ -5,17 +5,13 @@ import { Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 const PostFeed = ({feed}) => {
   let feedList = feed.map(post => {
     return (
-        <ListGroupItem>
-          <PostItem className='post-item' key={post._id} post={post} />
-        </ListGroupItem>
+          <PostItem key={post._id} post={post} />
     );
   });
   return(
-    <Col xsOffset={0} smOffset={1} xs={12} sm={10} className='post-feed'>
-      <ListGroup className='feed-list'>
+      <ListGroup componentClass='ul'>
         {feedList}
       </ListGroup>
-    </Col>
   );
 };
 
