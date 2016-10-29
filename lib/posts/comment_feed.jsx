@@ -1,17 +1,39 @@
 import React from 'react';
 import CommentItem from './comment_item';
-import CommentFormContainer from './comment_form_container';
+import CommentForm from './comment_form';
 import { ListGroup } from 'react-bootstrap';
-const Comments = ({post}) => {
-  let commentsList = post.comments.map(comment => {
-    return <CommentItem className='list-group-item' key={comment._id} comment={comment} />;
-  });
-  return(
+var moment = require('moment');
+
+
+class Comments extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    let commentsList = this.props.post.comments.map(comment => {
+      let createdDate = moment(comment.createdDate);
+      let twentyfour = moment().subtract(24, 'hours');
+      let editable = createdDate.isBetween(twentyfour, moment());
+      return <CommentItem
+        className='list-group-item'
+        key={comment._id}
+        comment={comment}
+        editable={editable}
+        editComment={this.props.editComment}
+        postId={this.props.post._id} />;
+    });
+
+    return(
       <ListGroup id='comments' componentClass='ul'>
         {commentsList}
-        <CommentFormContainer post={post} />
+        <CommentForm
+          post={this.props.post}
+          newComment={this.props.newComment}
+          currentUser={this.props.currentUser} />
       </ListGroup>
-  );
-};
+    );
+  }
+}
 
 export default Comments;

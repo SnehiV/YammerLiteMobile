@@ -14,6 +14,12 @@ class Login extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps({session}) {
+    if (this.props.session.currentUser !== session.currentUser){
+      this.props.router.replace("/home");
+    }
+  }
+
   handleChange(field){
     return (e) => this.setState({[field]: e.target.value});
   }

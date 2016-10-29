@@ -1,18 +1,10 @@
 import React from 'react';
-import { Link, withRouter} from 'react-router';
+import { Link, withRouter, hashHistory} from 'react-router';
 import NavigationBar from './navbar';
 
 class App extends React.Component{
   constructor(props){
     super(props);
-  }
-  //
-  componentDidUpdate(prevProps, prevState){
-    if (!prevProps.currentUser && this.props.currentUser) {
-      this.props.router.push('/home');
-    } else if (prevProps.currentUser && !this.props.currentUser) {
-      this.props.router.push('/');
-    }
   }
 
 
@@ -22,7 +14,8 @@ class App extends React.Component{
         <NavigationBar
           currentUser={this.props.currentUser}
           handleLogout={this.props.handleLogout}
-          fetchFeed={this.props.fetchFeed} />
+          fetchFeed={this.props.fetchFeed}
+          changePhoto={this.props.changePhoto} />
         {this.props.children}
       </div>
     );

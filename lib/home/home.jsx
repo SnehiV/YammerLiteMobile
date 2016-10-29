@@ -14,10 +14,7 @@ class Home extends React.Component{
   }
 
   componentWillMount(){
-    if (!this.props.currentUser){
-      this.props.router.push('/');
-    }
-    let filter = moment(Date.now()).subtract(1, 'week').toDate();
+    let filter = moment().startOf('week').subtract(1, 'week').toDate();
     this.props.fetchFeed(filter);
   }
 
@@ -26,7 +23,10 @@ class Home extends React.Component{
     return(
       <div className='home-content'>
         <PostForm newPost={this.props.newPost} currentUser={this.props.currentUser} />
-        <PostFeed feed={this.props.feed} newComment={this.props.newComment} />
+        <PostFeed
+          feed={this.props.feed}
+          newComment={this.props.newComment}
+          editPost={this.props.editPost} />
       </div>
     );
   }

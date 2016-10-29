@@ -1,8 +1,9 @@
 import React from 'react';
-import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
 import LoginContainer from '../session/login_container';
 import HomeContainer from '../home/home_container';
+import Splash from './splash';
 
 class AppRouter extends React.Component{
   constructor(props){
@@ -26,13 +27,13 @@ class AppRouter extends React.Component{
 
   render(){
     return (
-      <Router history={hashHistory}>
-        <Route path="/" component={AppContainer}>
-          <IndexRedirect to="/login" />
-          <Route path="/login" component={LoginContainer} />
-          <Route path="/home" component={HomeContainer} />
-        </Route>
-      </Router>
+        <Router history={hashHistory}>
+          <Route path="/" component={AppContainer}>
+            <IndexRoute component={Splash} />
+            <Route path="/login" component={LoginContainer} onEnter={this._redirectIfLoggedIn}/>
+            <Route path="/home" component={HomeContainer}  onEnter={this._ensureLoggedIn  }/>
+          </Route>
+        </Router>
     );
   }
 }

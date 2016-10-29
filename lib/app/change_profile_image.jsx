@@ -9,6 +9,8 @@ class ChangeProfileImage extends React.Component{
     };
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.previewFile = this.previewFile.bind(this);
+    this.handleChangeImage = this.handleChangeImage.bind(this);
   }
 
   close() {
@@ -17,6 +19,28 @@ class ChangeProfileImage extends React.Component{
 
   open() {
     this.setState({ showModal: true });
+  }
+
+  previewFile() {
+    var preview = document.querySelector('#uploaded-image');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+    console.log(file);
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  handleChangeImage(e) {
+    e.preventDefault();
+    var file = document.querySelector('input[type=file]');
+    let username = this.props.currentUser.username;
+    this.props.changePhoto(username, file);
+    this.close;
   }
 
 
@@ -28,10 +52,15 @@ class ChangeProfileImage extends React.Component{
             <Modal.Title>Change Profile Image</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <div className= 'current-image'>
+              Current Image:
+              <img id='uploaded-image' src="" height="200" alt="Image preview..." />
+            </div>
+            <input type="file" onChange={this.previewFile} /><br />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
-            <Button onClick={this.close}>Change Image</Button>
+            <Button onClick={this.handleChangeImage}>Change Image</Button>
           </Modal.Footer>
         </Modal>
       </MenuItem>

@@ -88,7 +88,7 @@ class NavigationBar extends React.Component{
             <NavDropdown
               eventKey={3}
               onSelect={this.handleFeedFilterSelect}
-              title="Today"
+              title="This Week"
               id="feedFilter">
 
               <MenuItem eventKey={'Today'}>Today</MenuItem>
@@ -105,7 +105,9 @@ class NavigationBar extends React.Component{
               id="currentUserDropdown">
 
               <MenuItem eventKey={3.1}>Change Password</MenuItem>
-              <ChangeProfileImage />
+              <ChangeProfileImage
+                currentUser={this.props.currentUser}
+                changePhoto={this.props.changePhoto} />
               <MenuItem eventKey={3.3}>Chrome Extension</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={3.4}>Logout</MenuItem>
@@ -122,7 +124,7 @@ class NavigationBar extends React.Component{
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">BlueFetch Feed</a>
+              <a href="#">BlueFletch Feed</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

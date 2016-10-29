@@ -1,0 +1,139 @@
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.application-container {
+    background-color: ghostwhite;
+}
+
+#sign-in {
+    margin-left: 15px;
+}
+
+.list-group {
+  width: 100%
+}
+
+.list-group-item {
+    border-radius: 7px;
+    margin-bottom: 30px;
+    border: 1px solid lightgray;
+    overflow: auto;
+    padding: 3%;
+}
+
+.post-item {
+    background-color: white;
+    padding: 4%;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+.post-item-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.post-username {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.post-timestamp {
+    font-size: small;
+    font-weight: 500;
+    opacity: 0.75;
+}
+.home-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.post-form-container {
+    width: 100%;
+}
+
+.feed-list {
+    padding: 0;
+}
+
+.post-feed {
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+form.form-horizontal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#comments {
+  background-color: rgba(225, 241, 254, 1);
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+}
+
+
+.comment-item {
+    display: flex;
+    align-items: center;
+}
+
+.comment-item-content {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px 0px 15px;
+}
+
+.comment-item-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.comment-username {
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: medium;
+}
+
+.comment-text {
+    font-size: small;
+}
+
+.comment-timestamp {
+    font-size: smaller;
+    opacity: 0.75;
+}
+
+.comment-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+}
+
+.comment-container {
+  padding: 4%;
+}
+
+.comments {
+    padding: 10px;
+    border-top: 1px solid lightgray;
+    background-color: rgba(238, 248, 252, 1);
+}
+
+img.img-responsive {
+    width: 50px;
+    height: 50px;
+}
