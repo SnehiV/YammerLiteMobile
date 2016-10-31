@@ -14,10 +14,13 @@ class Comments extends React.Component {
     let commentsList = this.props.post.comments.map(comment => {
       let createdDate = moment(comment.createdDate);
       let twentyfour = moment().subtract(24, 'hours');
-      let editable = createdDate.isBetween(twentyfour, moment());
+      let editable = (
+        createdDate.isBetween(twentyfour, moment()) &&
+        comment.commentUser._id === this.props.currentUser._id
+      );
       return <CommentItem
         className='list-group-item'
-        key={comment._id}
+        key={`${comment._id}${comment.commentText}`}
         comment={comment}
         editable={editable}
         editComment={this.props.editComment}

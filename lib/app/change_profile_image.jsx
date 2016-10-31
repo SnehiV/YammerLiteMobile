@@ -25,7 +25,6 @@ class ChangeProfileImage extends React.Component{
     var preview = document.querySelector('#uploaded-image');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
-    console.log(file);
     reader.addEventListener("load", function () {
       preview.src = reader.result;
     }, false);
@@ -37,10 +36,10 @@ class ChangeProfileImage extends React.Component{
 
   handleChangeImage(e) {
     e.preventDefault();
-    var file = document.querySelector('input[type=file]');
+    var file = document.querySelector('input[type=file]').files[0];
     let username = this.props.currentUser.username;
     this.props.changePhoto(username, file);
-    this.close;
+    this.close();
   }
 
 

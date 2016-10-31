@@ -1,4 +1,4 @@
-/*
+  /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -33,9 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-      if (parseFloat(window.device.version) === 7.0) {
-         document.body.style.marginTop = "20px";
-       }
+
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event

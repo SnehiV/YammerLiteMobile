@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, NavDropdown, MenuItem, Badge } from 'react-bootstrap';
 import ChangeProfileImage from './change_profile_image';
 var moment = require('moment');
 
@@ -80,11 +80,19 @@ class NavigationBar extends React.Component{
       </Nav>
     );
 
+    let badge;
+    if (this.props.updateCount > 0) {
+      badge = <Badge id='refresh-badge'>{this.props.updateCount}</Badge>;
+    }
+
     const navLoggedIn = () => {
       if (this.props.currentUser){
         return(
           <Nav pullRight>
-            <NavItem onClick={this.refresh} href="#">Refresh</NavItem>
+            <NavItem id='refresh' onClick={this.refresh} href="#">
+              Refresh&nbsp;
+              {badge}
+            </NavItem>
             <NavDropdown
               eventKey={3}
               onSelect={this.handleFeedFilterSelect}

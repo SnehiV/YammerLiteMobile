@@ -24,6 +24,7 @@ class Home extends React.Component{
       <div className='home-content'>
         <PostForm newPost={this.props.newPost} currentUser={this.props.currentUser} />
         <PostFeed
+          currentUser={this.props.currentUser}
           feed={this.props.feed}
           newComment={this.props.newComment}
           editPost={this.props.editPost} />

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
 }
 
 .application-container {
@@ -29,8 +29,6 @@
 .post-item {
     background-color: white;
     padding: 4%;
-    border-top-left-radius: 5%;
-    border-top-right-radius: 5%;
 }
 
 .post-item-header {
@@ -81,8 +79,6 @@ form.form-horizontal {
 
 #comments {
   background-color: rgba(225, 241, 254, 1);
-  border-bottom-left-radius: 5%;
-  border-bottom-right-radius: 5%;
 }
 
 
@@ -136,4 +132,14 @@ form.form-horizontal {
 img.img-responsive {
     width: 50px;
     height: 50px;
+}
+
+#refresh {
+    display: flex;
+    align-items: center;
+}
+
+#refresh-badge {
+  background-color: red;
+  color: white;
 }

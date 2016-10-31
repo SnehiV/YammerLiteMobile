@@ -22,9 +22,9 @@ class PostItem extends React.Component{
           <div className='post-item-header'>
             <h4 className='post-username'>{this.props.post.postUser.username}</h4>
             <p className='post-timestamp'>{moment(new Date(this.props.post.createdDate)).fromNow()}</p>
+            {editLink}
           </div>
           <p className='post-text'>{this.props.post.postText}</p>
-          {editLink}
         </div>
         <CommentFeedContainer post={this.props.post} />
       </div>

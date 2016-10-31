@@ -133,3 +133,13 @@ img.img-responsive {
     width: 50px;
     height: 50px;
 }
+
+#refresh {
+    display: flex;
+    align-items: center;
+}
+
+#refresh-badge {
+  background-color: red;
+  color: white;
+}

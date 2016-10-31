@@ -9,7 +9,22 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.bf.yammerLite"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.bf.yammerLite"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": "take a profile photo for the app",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.bf.yammerLite"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.bf.yammerLite"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.bf.yammerLite"
+        }
+    }
 }

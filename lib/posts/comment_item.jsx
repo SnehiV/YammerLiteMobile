@@ -16,9 +16,9 @@ const CommentItem = ({comment, editable, editComment, postId}) => {
           <div className='comment-item-header'>
             <h4 className='comment-username'>{comment.commentUser.username}</h4>
             <p className='comment-timestamp'>{moment(new Date(comment.createdDate)).fromNow()}</p>
+            {editLink}
           </div>
           <p className='comment-text'>{comment.commentText}</p>
-          {editLink}
         </div>
       </div>
     </div>
